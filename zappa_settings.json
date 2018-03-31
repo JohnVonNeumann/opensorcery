@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "aws_region": "ap-southeast-2",
+        "django_settings": "opensorcery.opensorcery.settings",
+        "profile_name": "personal",
+        "project_name": "opensorcery",
+        "runtime": "python3.6",
+        "s3_bucket": "zappa-0g3l33kad"
+    }
+}
