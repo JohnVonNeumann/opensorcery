@@ -6,8 +6,11 @@ name = "pypi"
 [dev-packages]
 
 [packages]
-django = "*"
+Django = "*"
 zappa = "*"
+django-storages = "*"
+"boto3" = "*"
+sceptre = "*"
 
 [requires]
 python_version = "3.6"
