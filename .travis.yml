@@ -5,7 +5,8 @@ before_install:
   - pip install pipenv
 install: 
   - pipenv install
-#script: 
+script: 
+  - pipenv check
 #  - nosetests
 #  - coverage run --source=reel setup.py test
 #after_success:
