@@ -1,0 +1,2 @@
+# DOCS: https://sceptre.cloudreach.com/latest/docs/stack_config.html
+template_path: templates/s3.yaml
