@@ -15,7 +15,7 @@ Resources:
     Type: "AWS::EC2::VPC"
     Properties:
       CidrBlock:
-        Ref: CidrBlockVPC
+        !Ref CidrBlockVPC
       EnableDnsHostnames: True
       EnableDnsSupport: True
 
@@ -23,23 +23,43 @@ Resources:
     Type: "AWS::EC2::Subnet"
     Properties:
       VpcId:
-        Ref: VPC
+        !Ref VPC
       CidrBlock:
-        Ref: CidrBlockPublicSubnet1
+        !Ref CidrBlockPublicSubnet1
       MapPublicIpOnLaunch: True
       AvailabilityZone:
-        Ref: AvailabilityZone1
+        !Ref AvailabilityZone1
 
   PublicSubnet2:
     Type: "AWS::EC2::Subnet"
     Properties:
       VpcId:
-        Ref: VPC
+        !Ref VPC
       CidrBlock:
-        Ref: CidrBlockPublicSubnet2
+        !Ref CidrBlockPublicSubnet2
       MapPublicIpOnLaunch: True
       AvailabilityZone:
-        Ref: AvailabilityZone2
+        !Ref AvailabilityZone2
+
+  PrivateSubnet1:
+    Type: "AWS::EC2::Subnet"
+    Properties:
+      VpcId:
+        !Ref VPC
+      CidrBlock:
+        !Ref CidrBlockPrivateSubnet1
+      AvailabilityZone:
+        !Ref AvailabilityZone3
+
+  PrivateSubnet2:
+    Type: "AWS::EC2::Subnet"
+    Properties:
+      VpcId:
+        !Ref VPC
+      CidrBlock:
+        !Ref CidrBlockPrivateSubnet2
+      AvailabilityZone:
+        !Ref AvailabilityZone4
 
   InternetGateway:
     Type: "AWS::EC2::InternetGateway"
@@ -48,40 +68,40 @@ Resources:
     Type: "AWS::EC2::VPCGatewayAttachment"
     Properties:
       VpcId:
-        Ref: VPC
+        !Ref VPC
       InternetGatewayId:
-        Ref: InternetGateway
+        !Ref InternetGateway
 
   PublicRouteTable:
     Type: "AWS::EC2::RouteTable"
     Properties:
       VpcId:
-        Ref: VPC
+        !Ref VPC
 
   PublicRoute:
     Type: "AWS::EC2::Route"
     DependsOn: VPCGatewayAttachment
     Properties:
       RouteTableId:
-        Ref: PublicRouteTable
+        !Ref PublicRouteTable
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId:
-        Ref: InternetGateway
+        !Ref InternetGateway
 
   # Public Subnet 1
   PublicSubnet1RouteTableAssociation:
     Type: "AWS::EC2::SubnetRouteTableAssociation"
     Properties:
       SubnetId:
-        Ref: PublicSubnet1
+        !Ref PublicSubnet1
       RouteTableId:
-        Ref: PublicRouteTable
+        !Ref PublicRouteTable
 
   PublicSubnet1NetworkACLAssociation:
     Type: "AWS::EC2::SubnetNetworkAclAssociation"
     Properties:
       SubnetId:
-        Ref: PublicSubnet1
+        !Ref PublicSubnet1
       NetworkAclId: !GetAtt VPC.DefaultNetworkAcl
 
   # Public Subnet 2
@@ -89,24 +109,24 @@ Resources:
     Type: "AWS::EC2::SubnetRouteTableAssociation"
     Properties:
       SubnetId:
-        Ref: PublicSubnet2
+        !Ref PublicSubnet2
       RouteTableId:
-        Ref: PublicRouteTable
+        !Ref PublicRouteTable
 
   PublicSubnet2NetworkACLAssociation:
     Type: "AWS::EC2::SubnetNetworkAclAssociation"
     Properties:
       SubnetId:
-        Ref: PublicSubnet2
+        !Ref PublicSubnet2
       NetworkAclId: !GetAtt VPC.DefaultNetworkAcl
 
 Outputs:
   VpcId:
     Value:
-      Ref: VPC
+      !Ref VPC
   PublicSubnet1Id:
     Value:
-      Ref: PublicSubnet1
+      !Ref PublicSubnet1
   PublicSubnet2Id:
     Value:
-      Ref: PublicSubnet2
+      !Ref PublicSubnet2
