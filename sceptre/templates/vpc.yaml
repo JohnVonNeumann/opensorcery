@@ -9,6 +9,9 @@ Parameters:
     Type: String
   AvailabilityZone2:
     Type: String
+  AvailabilityZone3:
+    Type: String
+    # do some better param filtering/setting here
 
 Resources:
   VPC:
