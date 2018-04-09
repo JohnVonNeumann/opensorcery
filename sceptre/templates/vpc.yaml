@@ -5,6 +5,10 @@ Parameters:
     Type: String
   CidrBlockPublicSubnet2:
     Type: String
+  CidrBlockPrivateSubnet1:
+    Type: String
+  CidrBlockPrivateSubnet2:
+    Type: String
   AvailabilityZone1:
     Type: String
   AvailabilityZone2:
