@@ -1,21 +1,33 @@
 Parameters:
   CidrBlockVPC:
     Type: String
+    AllowedPattern: ^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$
+    Default: 10.0.0.0/16
   CidrBlockPublicSubnet1:
     Type: String
+    AllowedPattern: ^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$
+    Default: 10.0.1.0/24
   CidrBlockPublicSubnet2:
     Type: String
+    AllowedPattern: ^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$
+    Default: 10.0.3.0/24
   CidrBlockPrivateSubnet1:
     Type: String
+    AllowedPattern: ^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$
+    Default: 10.0.2.0/24
   CidrBlockPrivateSubnet2:
     Type: String
+    AllowedPattern: ^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$
+    Default: 10.0.4.0/24
   AvailabilityZone1:
-    Type: String
+    Type: AWS::EC2::AvailabilityZone::Name
+    Default: ap-southeast-2a
   AvailabilityZone2:
-    Type: String
+    Type: AWS::EC2::AvailabilityZone::Name
+    Default: ap-southeast-2b
   AvailabilityZone3:
-    Type: String
-    # do some better param filtering/setting here
+    Type: AWS::EC2::AvailabilityZone::Name
+    Default: ap-southeast-2c
 
 Resources:
   VPC:
