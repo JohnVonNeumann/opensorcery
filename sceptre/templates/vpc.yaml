@@ -91,6 +91,12 @@ Resources:
       GatewayId:
         !Ref InternetGateway
 
+  PublicSubnetAcl:
+    Type: "AWS::EC2::NetworkAcl"
+    Properties:
+      VpcId:
+        !Ref VPC
+
   # Public Subnet 1
   PublicSubnet1RouteTableAssociation:
     Type: "AWS::EC2::SubnetRouteTableAssociation"
@@ -105,7 +111,8 @@ Resources:
     Properties:
       SubnetId:
         !Ref PublicSubnet1
-      NetworkAclId: !GetAtt VPC.DefaultNetworkAcl
+      NetworkAclId: 
+        !Ref PublicSubnetAcl
 
   # Public Subnet 2
   PublicSubnet2RouteTableAssociation:
@@ -122,7 +129,7 @@ Resources:
       SubnetId:
         !Ref PublicSubnet2
       NetworkAclId:
-        !GetAtt VPC.DefaultNetworkAcl
+        !Ref PublicSubnetAcl
 
   #
   # Private Subnets
@@ -160,6 +167,12 @@ Resources:
       RouteTableId:
         !Ref PrivateRouteTable
       DestinationCidrBlock: 10.0.0.0/16
+
+  PrivateSubnetAcl:
+    Type: "AWS::EC2::NetworkAcl"
+    Properties:
+      VpcId:
+        !Ref VPC
   
   # Private Subnet 1
   PrivateSubnet1RouteTableAssociation:
@@ -171,14 +184,12 @@ Resources:
         !Ref PrivateRouteTable
 
   PrivateSubnet1NetworkACLAssociation:
-    # We will be temporarily associating with the default ACL as a placeholder
-    # and this also applies for the other resources using default nacl's
     Type: "AWS::EC2::NetworkACLAssociation"
     Properties:
       SubnetId:
         !Ref PrivateSubnet1
       NetworkAclId: 
-        !GetAtt VPC.DefaultNetworkAcl
+        !Ref PrivateSubnetAcl
 
   # Private Subnet 2
   PrivateSubnet2RouteTableAssociation:
@@ -195,7 +206,7 @@ Resources:
       SubnetId:
         !Ref PrivateSubnet2
       NetworkAclId:
-        !GetAtt VPC.DefaultNetworkAcl
+        !Ref PrivateSubnetAcl
 
 Outputs:
   VpcId:
