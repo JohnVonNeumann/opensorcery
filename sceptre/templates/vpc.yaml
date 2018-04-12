@@ -161,12 +161,6 @@ Resources:
       VpcId:
         !Ref VPC
 
-  PrivateRoute:
-    Type: "AWS::EC2::Route"
-    Properties:
-      RouteTableId:
-        !Ref PrivateRouteTable
-
   PrivateSubnetAcl:
     Type: "AWS::EC2::NetworkAcl"
     Properties:
