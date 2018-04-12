@@ -140,20 +140,34 @@ Resources:
       NetworkAclId:
         !GetAtt VPC.DefaultNetworkAcl
 
-        #  PrivateRouteTable:
-        #    Type: "AWS::EC2::RouteTable"
-        #    Properties:
-        #      VpcId:
-        #        !Ref VPC
-        #
-        #  PrivateRoute:
-        #    Type: "AWS::EC2::Route"
-        #    Properties:
-        #      RouteTableId:
-        #        !Ref PrivateRouteTable
-        #      DestinationCidrBlock: 
-        #
-        #  PrivateSubnet1RouteTable
+  PrivateRouteTable:
+    Type: "AWS::EC2::RouteTable"
+    Properties:
+      VpcId:
+        !Ref VPC
+
+  PrivateRoute:
+    Type: "AWS::EC2::Route"
+    Properties:
+      RouteTableId:
+        !Ref PrivateRouteTable
+      DestinationCidrBlock: 10.0.0.0/16
+
+  PrivateSubnet1RouteTableAssociation:
+    Type: "AWS::EC2::SubnetRouteTableAssociation"
+    Properties:
+      SubnetId:
+        !Ref PrivateSubnet1
+      RouteTableId:
+        !Ref PrivateRouteTable
+
+  PrivateSubnet2RouteTableAssociation:
+    Type: "AWS::EC2::SubnetRouteTableAssociation"
+    Properties:
+      SubnetId:
+        !Ref PrivateSubnet2
+      RouteTableId:
+        !Ref PrivateRouteTable
 
 Outputs:
   VpcId:
