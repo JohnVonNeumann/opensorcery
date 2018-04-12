@@ -156,6 +156,8 @@ Resources:
         !Ref AvailabilityZone1
 
   PrivateRouteTable:
+    # Route tables automaticallly add a local conn to 10.0.0.0/16 so we can
+    # leave them without additional routes for the time being
     Type: "AWS::EC2::RouteTable"
     Properties:
       VpcId:
