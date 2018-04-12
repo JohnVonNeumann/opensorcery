@@ -38,6 +38,10 @@ Resources:
       EnableDnsHostnames: True
       EnableDnsSupport: True
 
+  #
+  # Public Subnets
+  #
+
   PublicSubnet1:
     Type: "AWS::EC2::Subnet"
     Properties:
@@ -59,26 +63,6 @@ Resources:
       MapPublicIpOnLaunch: True
       AvailabilityZone:
         !Ref AvailabilityZone2
-
-  PrivateSubnet1:
-    Type: "AWS::EC2::Subnet"
-    Properties:
-      VpcId:
-        !Ref VPC
-      CidrBlock:
-        !Ref CidrBlockPrivateSubnet1
-      AvailabilityZone:
-        !Ref AvailabilityZone3
-
-  PrivateSubnet2:
-    Type: "AWS::EC2::Subnet"
-    Properties:
-      VpcId:
-        !Ref VPC
-      CidrBlock:
-        !Ref CidrBlockPrivateSubnet2
-      AvailabilityZone:
-        !Ref AvailabilityZone4
 
   InternetGateway:
     Type: "AWS::EC2::InternetGateway"
@@ -140,6 +124,30 @@ Resources:
       NetworkAclId:
         !GetAtt VPC.DefaultNetworkAcl
 
+  #
+  # Private Subnets
+  # 
+  
+  PrivateSubnet1:
+    Type: "AWS::EC2::Subnet"
+    Properties:
+      VpcId:
+        !Ref VPC
+      CidrBlock:
+        !Ref CidrBlockPrivateSubnet1
+      AvailabilityZone:
+        !Ref AvailabilityZone3
+
+  PrivateSubnet2:
+    Type: "AWS::EC2::Subnet"
+    Properties:
+      VpcId:
+        !Ref VPC
+      CidrBlock:
+        !Ref CidrBlockPrivateSubnet2
+      AvailabilityZone:
+        !Ref AvailabilityZone4
+
   PrivateRouteTable:
     Type: "AWS::EC2::RouteTable"
     Properties:
@@ -152,7 +160,8 @@ Resources:
       RouteTableId:
         !Ref PrivateRouteTable
       DestinationCidrBlock: 10.0.0.0/16
-
+  
+  # Private Subnet 1
   PrivateSubnet1RouteTableAssociation:
     Type: "AWS::EC2::SubnetRouteTableAssociation"
     Properties:
@@ -161,6 +170,17 @@ Resources:
       RouteTableId:
         !Ref PrivateRouteTable
 
+  PrivateSubnet1NetworkACLAssociation:
+    # We will be temporarily associating with the default ACL as a placeholder
+    # and this also applies for the other resources using default nacl's
+    Type: "AWS::EC2::NetworkACLAssociation"
+    Properties:
+      SubnetId:
+        !Ref PrivateSubnet1
+      NetworkAclId: 
+        !GetAtt VPC.DefaultNetworkAcl
+
+  # Private Subnet 2
   PrivateSubnet2RouteTableAssociation:
     Type: "AWS::EC2::SubnetRouteTableAssociation"
     Properties:
@@ -168,6 +188,14 @@ Resources:
         !Ref PrivateSubnet2
       RouteTableId:
         !Ref PrivateRouteTable
+  
+  PrivateSubnet2NetworkACLAssociation:
+    Type: "AWS::EC2::NetworkACLAssociation"
+    Properties:
+      SubnetId:
+        !Ref PrivateSubnet2
+      NetworkAclId:
+        !GetAtt VPC.DefaultNetworkAcl
 
 Outputs:
   VpcId:
