@@ -14,5 +14,10 @@ Seeing as the project is heavily reliant on Infrastructure (possibly moreso than
 ### Sceptre
 We use Sceptre to handle test infrastructure. You can find it located at `/sceptre`
 
-# used for the private rds instance via a ssh forwarder
-https://medium.com/@carlos.ribeiro/connecting-on-rds-server-that-is-not-publicly-accessible-1aee9e43b870
+#### used for the private rds instance via a ssh forwarder
+        https://medium.com/@carlos.ribeiro/connecting-on-rds-server-that-is-not-publicly-accessible-1aee9e43b870
+
+## Design
+
+MVP/User mapping design/planning is being done via trello. Feel free to jump on it to have a browse at the overall planning of the application.
+[Opensorcery - Trello](https://trello.com/b/HcEsFgUa/opensourcery)
