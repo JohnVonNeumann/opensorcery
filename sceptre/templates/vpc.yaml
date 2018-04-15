@@ -124,6 +124,11 @@ Resources:
         !Ref PublicRouteTable
 
   PublicSubnet2SubnetNetworkAclAssociation:
+    # For the time being, NACL entries haven't been created, mainly because it
+    # would add quite a bit of time onto the process and I didn't want the PR
+    # to be huge so I'll take a more iterative approach. But entries will have
+    # to be made as Resources are added to the network. ie: port 5432 nacl
+    # entry for the RDS that will eventually come
     Type: "AWS::EC2::SubnetNetworkAclAssociation"
     Properties:
       SubnetId:
@@ -179,6 +184,7 @@ Resources:
         !Ref PrivateRouteTable
 
   PrivateSubnet1SubnetNetworkAclAssociation:
+    # Same applies for nacl entries here as it did for the docs left above.
     Type: "AWS::EC2::SubnetNetworkAclAssociation"
     Properties:
       SubnetId:
