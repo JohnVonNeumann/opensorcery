@@ -11,6 +11,7 @@ zappa = "*"
 django-storages = "*"
 "boto3" = "*"
 sceptre = "*"
+yamllint = "*"
 
 [requires]
 python_version = "3.6"
