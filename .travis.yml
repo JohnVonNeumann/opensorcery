@@ -7,7 +7,7 @@ install:
   - pipenv install
 script: 
   - pipenv check
-#  - nosetests
+  - yamllint .
 #  - coverage run --source=reel setup.py test
 #after_success:
 #- coveralls
