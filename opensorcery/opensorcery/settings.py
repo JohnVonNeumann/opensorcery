@@ -25,20 +25,18 @@ SECRET_KEY = '$j#(&k#%re2nnjp-t@27yk=ey%v%c7_(en(_vf+)u!=a0!8z=^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'd05o9vylw0.execute-api.ap-southeast-2.amazonaws.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'opensorcery',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages'
 ]
 
 MIDDLEWARE = [
@@ -119,15 +117,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-#STATIC_URL = '/static/'
-
-# BOTO STATIC STORAGE SETTINGS
-AWS_STORAGE_BUCKET_NAME = os.environ.get("OPENSORCERY_AWS_STORAGE_BUCKET_NAME")
-
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.s3Boto3Storage'
-
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = '/static/'
