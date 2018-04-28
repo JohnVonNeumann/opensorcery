@@ -1,0 +1,22 @@
+{
+  "name": "opensorcery",
+  "version": "0.1.1",
+  "description": "Gamified Open Source contributions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opensorcery-io/opensorcery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/opensorcery-io/opensorcery/issues"
+  },
+  "homepage": "https://github.com/opensorcery-io/opensorcery#readme",
+  "devDependencies": {
+    "cypress": "^2.1.0"
+  }
+}
