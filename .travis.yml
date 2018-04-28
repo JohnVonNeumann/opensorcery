@@ -6,6 +6,7 @@ before_install:
   - pip install pipenv
 install:
   - pipenv install
+  - python opensorcery/manage.py test
 script:
   # The reason for the cd backwards and then running of yamllint is a small
   # problem I've found when runnign yamllint from the root of a dir. It won't
@@ -13,6 +14,5 @@ script:
   - pipenv check
   - cd ..
   - yamllint opensorcery/
-  - python opensorcery/manage.py test
 # after_success:
 # - coveralls
