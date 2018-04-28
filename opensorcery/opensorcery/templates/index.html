@@ -5,23 +5,23 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="offset-sm-3 col-sm-6">
+      <div class="offset-sm-1 col-sm-10">
         <div class="row">
           <div class="col-sm-12">
-            <h1> Welcome to Opensorcery! </h1>
+            <h1 id="title"> Welcome to Opensorcery. </h1>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <h2> Opensorcery is a gamification platform for Open Source contributions. </h2>
+            <h2 id="description"> Gamified Open Source contributions. </h2>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
-            <button type="button"> Sign Up </button>
+            <button type="button" class="btn btn-outline-dark btn-lg"> Sign Up </button>
           </div>
           <div class="col-sm-6">
-            <button type="button"> Sign In </button>
+            <button type="button" class="btn btn-outline-dark btn-lg"> Sign In </button>
           </div>
         </div>
       </div>
@@ -42,8 +42,16 @@ div.col-sm-12 h1,h2 {
   text-align: center;
 }
 
+#title {
+  font-size: 72px; 
+}
+
+#description {
+  font-size: 40px; 
+}
+
 div.row {
-  padding: 0.7em;
+  padding: 1.5em;
 }
 
 .container {
