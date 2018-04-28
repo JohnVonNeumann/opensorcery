@@ -13,6 +13,6 @@ script:
   - pipenv check
   - cd ..
   - yamllint opensorcery/
-#  - coverage run --source=reel setup.py test
+  - python opensorcery/manage.py test
 # after_success:
 # - coveralls
