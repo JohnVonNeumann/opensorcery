@@ -5,3 +5,6 @@ from django.shortcuts import render
 
 def welcome(request):
     return render(request, "welcome.html")
+
+def login(request):
+    return render(request, "login.html")
