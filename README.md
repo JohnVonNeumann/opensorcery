@@ -1,5 +1,5 @@
 # Opensorcery
-[![Build Status](https://travis-ci.org/JohnVonNeumann/opensorcery.svg?branch=master)](https://travis-ci.org/JohnVonNeumann/opensorcery)
+[![Build Status](https://travis-ci.org/opensorcery-io/opensorcery.svg?branch=master)](https://travis-ci.org/opensorcery-io/opensorcery)
 ## Backend
 
 ### Django
