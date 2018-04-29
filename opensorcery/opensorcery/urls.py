@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 
 from . import views
+from user.views import welcome
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
+    path('user/welcome', welcome, name='welcome'),
 ]
