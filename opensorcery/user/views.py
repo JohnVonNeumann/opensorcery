@@ -18,6 +18,3 @@ def welcome(request):
         'auth0User': auth0user,
         'userdata': json.dumps(userdata, indent=4)
     })
-
-def login(request):
-    return render(request, "login.html")
