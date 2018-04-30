@@ -146,5 +146,5 @@ AUTHENTICATION_BACKENDS = {
     }
 
 LOGIN_URL = "/login/auth0"
-LOGIN_REDIRECT_URL = "/user/welcome"
+LOGIN_REDIRECT_URL = "/user"
 LOGOUT_REDIRECT_URL = "/"
