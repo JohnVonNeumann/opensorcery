@@ -1,7 +1,14 @@
 from django.test import TestCase
+from django.urls import resolve
+
+from user.views import welcome
 
 # Create your tests here.
 class UserTests(TestCase):
+
+    def test_user_path_resolves_to_welcome(self):
+        response = resolve('/user/')
+        self.assertEqual(response.func, welcome)
 
     def test_directly_accessing_user_page_without_auth(self):
         response = self.client.get('/user/')
@@ -17,5 +24,3 @@ class UserTests(TestCase):
 #        print(resp.context)
 #        self.assertEqual(str(resp.context['auth0user']), 'testuser1')
 #        self.assertEqual(resp.status_code, 200)
-
-
