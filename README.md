@@ -1,5 +1,6 @@
 # Opensorcery
 [![Build Status](https://travis-ci.org/opensorcery-io/opensorcery.svg?branch=master)](https://travis-ci.org/opensorcery-io/opensorcery)
+[![Coverage Status](https://coveralls.io/repos/github/opensorcery-io/opensorcery/badge.svg?branch=master)](https://coveralls.io/github/opensorcery-io/opensorcery?branch=master)
 ## Backend
 
 ### Django
