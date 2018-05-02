@@ -10,9 +10,9 @@ script:
   # The reason for the cd backwards and then running of yamllint is a small
   # problem I've found when runnign yamllint from the root of a dir. It won't
   # find the files. I've reported it on the yamllint repo.
-  - cd opensorcery && python manage.py test
+  - cd opensorcery && coverage run --branch manage.py test
   - pipenv check
   - cd ..
   - yamllint opensorcery/
-# after_success:
-# - coveralls
+after_success:
+  - coveralls
