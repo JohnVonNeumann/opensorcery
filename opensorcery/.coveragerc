@@ -1,5 +1,7 @@
 [run]
-omit = */.local/* 
+omit = */.local/*,
 
 [report]
-omit = */.local/*
+omit = */.local/*,
+        manage.py,
+        */settings.py
