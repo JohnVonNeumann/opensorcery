@@ -14,6 +14,7 @@ social-auth-app-django = "*"
 python-dotenv = "*"
 requests = "*"
 coverage = "*"
+django-pdb = "*"
 
 [requires]
 python_version = "3.6"
