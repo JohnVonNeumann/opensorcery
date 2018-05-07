@@ -15,6 +15,9 @@ python-dotenv = "*"
 requests = "*"
 coverage = "*"
 django-pdb = "*"
+httpretty = "*"
+social-auth-core = "*"
+"unittest2" = "*"
 
 [requires]
 python_version = "3.6"
