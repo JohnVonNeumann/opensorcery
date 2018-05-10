@@ -134,8 +134,8 @@ if ENV_FILE:
 # Auth0 Integration
 SOCIAL_AUTH_TRAILING_SLASH = False                    # Remove end slash from routes
 SOCIAL_AUTH_AUTH0_DOMAIN = os.environ.get('SOCIAL_AUTH_AUTH0_DOMAIN')
-SOCIAL_AUTH_AUTH0_KEY = os.environ.get('SOCIAL_AUTH_AUTH0_KEY')
-SOCIAL_AUTH_AUTH0_SECRET = os.environ.get('SOCIAL_AUTH_AUTH0_SECRET')
+SOCIAL_AUTH_GITHUB_KEY = os.environ.get('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('SOCIAL_AUTH_GITHUB_SECRET')
 
 SOCIAL_AUTH_AUTH0_SCOPE = [
     'openid',
@@ -143,10 +143,10 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
 ]
 
 AUTHENTICATION_BACKENDS = {
-    'auth0login.auth0backend.Auth0',
+    'social_core.backends.github.GithubOAuth2',
     'django.contrib.auth.backends.ModelBackend'
     }
 
-LOGIN_URL = "/login/auth0"
+LOGIN_URL = "/login/github"
 LOGIN_REDIRECT_URL = "/user"
 LOGOUT_REDIRECT_URL = "/"
