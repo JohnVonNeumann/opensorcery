@@ -147,6 +147,6 @@ AUTHENTICATION_BACKENDS = {
     'django.contrib.auth.backends.ModelBackend'
     }
 
-LOGIN_URL = "/login/github"
-LOGIN_REDIRECT_URL = "/user"
-LOGOUT_REDIRECT_URL = "/"
+#LOGIN_URL = "/login/github"
+#LOGIN_REDIRECT_URL = "/user"
+#LOGOUT_REDIRECT_URL = "/"
