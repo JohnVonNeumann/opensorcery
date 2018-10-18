@@ -1,4 +1,6 @@
  FROM python:3
+ RUN apt update -y
+ RUN apt upgrade -y
  ENV PYTHONUNBUFFERED 1
  RUN mkdir /code
  WORKDIR /code
