@@ -9,3 +9,4 @@ node_modules/
 
 # developement environment files
 *.swp
+__pycache__
