@@ -1,5 +1,14 @@
 # Opensorcery
 [![Build Status](https://travis-ci.org/opensorcery-io/opensorcery.svg?branch=master)](https://travis-ci.org/opensorcery-io/opensorcery)
+
+## Development
+The project uses Docker/Docker Compose to handle development environments. The setup is fairly simple:
+1. `git clone` the repository
+2. Ensure that you have docker installed.
+3. from the root of the directory, run `docker-compose up`
+4. Navigate to `localhost:8000`
+5. great success
+
 ## Backend
 
 ### Django
