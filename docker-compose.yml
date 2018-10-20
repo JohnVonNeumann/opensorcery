@@ -3,8 +3,6 @@ version: '3'
 services:
   db:
     image: postgres
-    ports:
-      - "5432:5432"
   web:
     build: .
     command: python3 opensorcery/manage.py runserver 0.0.0.0:8000
