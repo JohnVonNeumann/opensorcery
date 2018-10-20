@@ -1,0 +1,10 @@
+# we utilise the requirements file as `pip` is a base installed package whereas
+# pipenv is not, I considered just `pip install pipenv` in the docker file but
+# i felt that this gives a more centralised location for base image changes
+# i could be wrong, ya know?
+pipenv
+Django
+boto3
+sceptre
+yamllint
+psycopg2

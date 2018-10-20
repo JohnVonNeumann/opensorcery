@@ -1,3 +1,12 @@
+# secrets files
 .env
+
+# databases
 db.sqlite3
+
+# compiled dependencies
 node_modules/
+
+# developement environment files
+*.swp
+__pycache__
