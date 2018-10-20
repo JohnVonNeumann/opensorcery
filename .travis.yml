@@ -15,7 +15,7 @@ before_install:
     #
 
 before_script:
-  - docker-compose up
+  - docker-compose up -d
 
 script:
   # The reason for the cd backwards and then running of yamllint is a small
