@@ -3,3 +3,8 @@
 # i felt that this gives a more centralised location for base image changes
 # i could be wrong, ya know?
 pipenv
+Django
+boto3
+sceptre
+yamllint
+psycopg2
