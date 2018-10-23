@@ -22,6 +22,8 @@ jobs:
   include:
     - stage: docker linting
       script: docker run --rm -i hadolint/hadolint < Dockerfile
+    - stage: yaml linting
+      script: docker run --rm -v opensorcery-io/opensorcery:/lint_this sdesbure/yamllint yamllint /lint_this
     - stage: docker-compose up --build
       os: linux
       script: docker-compose up -d --build
