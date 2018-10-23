@@ -5,6 +5,9 @@ services:
     image: postgres
     ports:
       - "5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
   web:
     build: .
     command: python3 opensorcery/manage.py runserver 0.0.0.0:8000
