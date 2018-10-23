@@ -27,8 +27,10 @@ jobs:
   include:
     - stage: docker linting
       script: docker run --rm -i hadolint/hadolint < Dockerfile
-    - stage: docker build
+    - stage: docker-compose build
       script: docker-compose build
+    - stage: docker-compose up
+      script: docker-compose up --abort-on-container-exit
 
 # after_success:
 # - coveralls
