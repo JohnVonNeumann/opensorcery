@@ -9,9 +9,13 @@ jobs:
         - docker run --rm -i hadolint/hadolint < Dockerfile
         - >
           docker run --rm
-          -v ${PWD}:/lint_this
+          -v ${PWD}:/yaml
           sdesbure/yamllint
-          yamllint /lint_this
+          yamllint /yaml
+        - >
+          docker run --rm
+          -v ${PWD}:/pycode
+          flintci/pycodestyle
     - stage: docker-compose up --build
       os: linux
       script: docker-compose up -d --build
