@@ -2,31 +2,20 @@
 services:
   - docker
 
-    #script:
-    #  # The reason for the cd backwards and then running of yamllint is a small
-    #  # problem I've found when runnign yamllint from the root of a dir. It won't
-    #  # find the files. I've reported it on the yamllint repo.
-    #  # run tests in follow up branches
-    #  # most likely will have to include apps in INSTALLED_APPS for test runner
-    #  # to auto detect tests
-    #  - echo "Cheap hack to get this green until follow up PR"
-    #  # - docker-compose run python manage.py test
-    #  #- pipenv check
-    #  #- cd ..
-    #  #- yamllint opensorcery/
-    #  #- docker-compose build
-    #  #- docker-compose run web python3 manage.py migrate
-    #  #- odocker-compose up
-
 jobs:
   include:
-    - stage: docker linting
-      script: docker run --rm -i hadolint/hadolint < Dockerfile
-    - stage: yaml linting
-      script: docker run --rm -v ${PWD}:/lint_this sdesbure/yamllint yamllint /lint_this
+    - stage: code linting
+      script:
+        - docker run --rm -i hadolint/hadolint < Dockerfile
+        - >
+          docker run --rm
+          -v ${PWD}:/lint_this
+          sdesbure/yamllint
+          yamllint /lint_this
     - stage: docker-compose up --build
       os: linux
       script: docker-compose up -d --build
+      # - docker-compose run python manage.py test
 
 # after_success:
 # - coveralls
