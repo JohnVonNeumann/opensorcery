@@ -16,6 +16,7 @@ jobs:
           docker run --rm
           -v ${PWD}:/pycode
           flintci/pycodestyle
+          /pycode
     - stage: docker-compose up --build
       os: linux
       script: docker-compose up -d --build
