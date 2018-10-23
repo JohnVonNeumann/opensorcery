@@ -1,9 +1,4 @@
 ---
-language: python
-
-python:
-  - "3.6"
-
 services:
   - docker
 
@@ -30,7 +25,7 @@ jobs:
     - stage: docker-compose build
       script: docker-compose build
     - stage: docker-compose up
-      script: docker-compose up --abort-on-container-exit
+      script: docker-compose up --abort-on-container-exit --detached
 
 # after_success:
 # - coveralls
