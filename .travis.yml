@@ -24,7 +24,7 @@ jobs:
       script: docker run --rm -i hadolint/hadolint < Dockerfile
     - stage: docker-compose up --build
       os: linux
-      script: docker-compose up --detach --build
+      script: docker-compose up -d --build
 
 # after_success:
 # - coveralls
