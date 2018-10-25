@@ -17,6 +17,11 @@ jobs:
           -v ${PWD}:/pycode
           flintci/pycodestyle
           /pycode
+        - > 
+          docker run --rm
+          -v ${PWD}:/code
+          opensorcery/bandit -r
+          /code
     - stage: docker-compose up --build
       os: linux
       script: docker-compose up -d --build
