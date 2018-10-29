@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/opensorcery-io/opensorcery#readme",
   "devDependencies": {
-    "cypress": "^2.1.0"
+    "cypress": "^2.1.0",
+    "vue-cli": "latest"
   }
 }
