@@ -18,3 +18,10 @@ services:
       - "8000:8000"
     depends_on:
       - db
+  frontend:
+    image: mhart/alpine-node
+    command: npm install 
+    volumes:
+      - .:/code
+    ports:
+      - "8080:8080"
