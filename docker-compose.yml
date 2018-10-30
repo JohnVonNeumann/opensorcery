@@ -3,12 +3,18 @@ version: '3'
 
 services:
   db:
-    dockerfile: Dockerfile-database
+    build:
+      context: .
+      dockerfile: Dockerfile-database
   backend:
-    dockerfile: Dockerfile-backend
+    build:
+      context: .
+      dockerfile: Dockerfile-backend
     command: python3 opensorcery/manage.py runserver 0.0.0.0:8000
     depends_on:
       - db
   frontend:
-    dockerfile: Dockerfile-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
     command: npm run dev 
