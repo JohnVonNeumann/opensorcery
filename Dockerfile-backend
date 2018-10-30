@@ -1,5 +1,5 @@
+FROM python:3-slim
 LABEL maintainer="github@opensorcery.io"
-FROM python:3-alpine
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 COPY . /code/
