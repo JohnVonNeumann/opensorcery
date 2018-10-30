@@ -21,6 +21,7 @@ services:
   frontend:
     image: mhart/alpine-node
     command: npm install 
+    working_dir: /code
     volumes:
       - .:/code
     ports:
