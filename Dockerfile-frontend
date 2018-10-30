@@ -1,5 +1,5 @@
-LABEL maintainer="github@opensorcery.io"
 FROM node:alpine
+LABEL maintainer="github@opensorcery.io"
 RUN mkdir /code
 COPY . /code
 WORKDIR /code
