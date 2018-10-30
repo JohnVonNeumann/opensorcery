@@ -9,20 +9,11 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-  web:
-    build: .
+  backend:
+    dockerfile: Dockerfile-backend
     command: python3 opensorcery/manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
     depends_on:
       - db
   frontend:
-    image: mhart/alpine-node
-    command: npm install 
-    working_dir: /code
-    volumes:
-      - .:/code
-    ports:
-      - "8080:8080"
+    dockerfile: Dockerfile-frontend
+    command: npm run dev 
