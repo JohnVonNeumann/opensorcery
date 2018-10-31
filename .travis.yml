@@ -6,7 +6,9 @@ jobs:
   include:
     - stage: code linting
       script:
-        - docker run --rm -i hadolint/hadolint < Dockerfile
+        - docker run --rm -i hadolint/hadolint < Dockerfile-backend
+        - docker run --rm -i hadolint/hadolint < Dockerfile-frontend
+        - docker run --rm -i hadolint/hadolint < Dockerfile-database
         - >
           docker run --rm
           -v ${PWD}:/yaml
