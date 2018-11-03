@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "Gamified open source contributions",
   "main": "index.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "vue-cli": "latest"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
