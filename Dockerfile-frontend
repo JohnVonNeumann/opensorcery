@@ -1,8 +1,7 @@
-FROM node:alpine
+FROM node:10
 LABEL maintainer="github@opensorcery.io"
-RUN mkdir /code
 COPY . /code
 WORKDIR /code
-VOLUME /code
 RUN npm install
+ENV PATH /code/node_modules/.bin:$PATH
 EXPOSE 8080/tcp
