@@ -3,18 +3,22 @@ version: '3'
 
 services:
   db:
-    image: postgres
-    ports:
-      - "5432"
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-  web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile-database
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile-backend
     command: python3 opensorcery/manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
     depends_on:
       - db
+    volumes:
+      - .:/code
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
+    command: npm run dev 
+    volumes:
+      - .:/code

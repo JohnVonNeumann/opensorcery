@@ -6,7 +6,9 @@ jobs:
   include:
     - stage: code linting
       script:
-        - docker run --rm -i hadolint/hadolint < Dockerfile
+        - docker run --rm -i hadolint/hadolint < Dockerfile-backend
+        - docker run --rm -i hadolint/hadolint < Dockerfile-frontend
+        - docker run --rm -i hadolint/hadolint < Dockerfile-database
         - >
           docker run --rm
           -v ${PWD}:/yaml
@@ -22,6 +24,10 @@ jobs:
           -v ${PWD}:/code
           opensorcery/bandit -r
           /code
+        - >
+          docker run --rm
+          -v ${PWD}:/code
+          opensorcery/npm-package-json-lint
     - stage: docker-compose up --build
       os: linux
       script: docker-compose up -d --build
