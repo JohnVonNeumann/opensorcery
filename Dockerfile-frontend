@@ -1,7 +1,7 @@
 FROM node:alpine
 LABEL maintainer="github@opensorcery.io"
 COPY . /code
-WORKDIR /code
+WORKDIR /code/frontend
 RUN npm install
 ENV PATH /code/node_modules/.bin:$PATH
 EXPOSE 8080/tcp

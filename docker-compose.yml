@@ -15,6 +15,8 @@ services:
       - db
     volumes:
       - .:/code
+    ports:
+      - "8000:8000"
   frontend:
     build:
       context: .
@@ -22,3 +24,5 @@ services:
     command: npm run dev 
     volumes:
       - .:/code
+    ports:
+      - "8080:8080"
