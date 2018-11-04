@@ -15,10 +15,14 @@ services:
       - db
     volumes:
       - .:/code
+    ports:
+      - "8000:8000"
   frontend:
     build:
       context: .
       dockerfile: Dockerfile-frontend
     command: npm run dev 
     volumes:
-      - .:/code
+      - ./frontend:/code
+    ports:
+      - "8080:8080"
