@@ -1,6 +1,6 @@
 {
-  "name": "frontend",
-  "version": "1.0.0",
+  "name": "opensorcery-frontend",
+  "version": "0.0.1",
   "description": "Vue.js SPA frontend that ingests from API interfaced backend",
   "author": "opensorcery.io",
   "private": true,
@@ -66,6 +66,7 @@
     "shelljs": "^0.7.6",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
+    "vue-cli": "latest",
     "vue-jest": "^1.0.2",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
