@@ -34,3 +34,12 @@ npm_add_package:
 # Runs `npm update` and saves the output to the `package{-lock}.json` files.
 npm_update_packages:
 	docker-compose run frontend npm update --save
+
+# pip_update_packages:
+# Runs 'pip install --upgrade" from the `requirements.txt` file, before running
+# a `pip freeze` and piping it back into the `requirements.txt` file. This is
+# effectively an upgrade.
+pip_update_packages:
+	docker-compose run backend bash -c "pip install -r requirements.txt --upgrade && pip freeze > requirements.txt"
+
+
