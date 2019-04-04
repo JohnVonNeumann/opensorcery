@@ -10,6 +10,8 @@ The project uses Docker/Docker Compose to handle development environments. The s
 5. Navigate also to `localhost:8080` for Vue.
 5. great success
 
+---
+
 ## Backend
 
 ### Automation
@@ -35,8 +37,12 @@ Commands can be read by users by reading the [Makefile](https://github.com/opens
 ### Django
 Django uses `settings.py` to configure itself, and as such, it will be home to a variety of secrets and whatnot. Some things will have to be set via `environmental variables` to work effectively. 
 
+---
+
 ## Infrastructure
 Infrastructure for the project is currently up in the air, mainly due to the fact that the project started off as a serverless project, before going back to non-serverless, then the use of containers for development has lead me (JohnVonNeumann) to believe that a transition to a containerised production environment makes the most sense. I don't have any interest in managing non-standard environments that have separate implementations/diverge from one another. However, I'm also not totally sold on the idea of running containers in production, because I am unsure of when they should actually be used and when their usage is a meme.
+
+---
 
 ## Frontend
 ### Installing dependencies and updating the package.lock file
@@ -52,6 +58,8 @@ OR
         2. Add the package to your `package.json` file, then run `docker-compose run frontend npm install`
 
 Either of these choices will update the `package.lock` file.
+
+---
 
 ## Design
 
