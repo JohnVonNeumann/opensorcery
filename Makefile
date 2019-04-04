@@ -29,3 +29,8 @@ up:
 # 		   keyword args. So you would provide it via package=lolpackagename.
 npm_add_package:
 	docker-compose run frontend npm install $(package) --save
+
+# npm_update_packages:
+# Runs `npm update` and saves the output to the `package{-lock}.json` files.
+npm_update_packages:
+	docker-compose run frontend npm update --save
