@@ -16,9 +16,7 @@ The project uses Docker/Docker Compose to handle development environments. The s
 Django uses `settings.py` to configure itself, and as such, it will be home to a variety of secrets and whatnot. Some things will have to be set via `environmental variables` to work effectively. 
 
 ## Infrastructure
-Seeing as the project is heavily reliant on Infrastructure (possibly moreso than usual, due to the major abstraction of it) I've included all the necessary setup components as well as the obvious code. My knowledge only covers AWS at this point in time.
-### Sceptre
-We use Sceptre to handle test infrastructure. You can find it located at `/sceptre`. Although this probably won't continue to be a thing for very long, Sceptre is effectively a wrapper around Cloudformation, with the original idea being that people could run their own dev envs on AWS, this, I realised, is stupid, the new Docker configuration will be far better suited towards development environments and will help maintain consistency across platforms.
+Infrastructure for the project is currently up in the air, mainly due to the fact that the project started off as a serverless project, before going back to non-serverless, then the use of containers for development has lead me (JohnVonNeumann) to believe that a transition to a containerised production environment makes the most sense. I don't have any interest in managing non-standard environments that have separate implementations/diverge from one another. However, I'm also not totally sold on the idea of running containers in production, because I am unsure of when they should actually be used and when their usage is a meme.
 
 ## Frontend
 ### Installing dependencies and updating the package.lock file
