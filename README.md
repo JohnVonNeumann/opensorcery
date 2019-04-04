@@ -15,7 +15,10 @@ The project uses Docker/Docker Compose to handle development environments. The s
 ### Automation
 Automation here is a first class citizen, and we have a strong belief that all menial tasks can, should and will be automated. We utilise `Make` for development environment automation, as it allows for a consistent API to deal with, and allows various skilled operators to provide a simple interface for their (perhaps) complicated processes to be handled.
 
-        A prime example of this would be that the average user doesn't need to understand docker to run their local environment, by wrapping the `docker-compose` binary with `Make`, all the user needs to know is `make up` serves them their development environment.
+        A prime example of this would be that the average user doesn't need to 
+        understand docker to run their local environment, by wrapping the 
+        `docker-compose` binary with `Make`, all the user needs to know is 
+        `make up` serves them their development environment.
 
 #### Make Commands
 
@@ -25,6 +28,9 @@ Commands can be read by users by reading the [Makefile](https://github.com/opens
 | ------- | ----------- |
 | check_host_system_installs | Runs `which` against `binary` targets to check the host level |
 | up | Runs `docker-compose up` to stand up a development environment |
+| npm_add_package | Runs `npm install` with a user-provided keyword-arg in the form of `package=example` to install a package and add it to the `package.lock` files. |
+| npm_update_packages | Runs `npm update --save` to update your `package.lock` files. |
+| pip_update_packages | Runs `pip install --upgrade` with the `requirements.txt` file, and then `pip freeze` back into the `requirements.txt` file to upgrade all `python` dependencies. |
 
 ### Django
 Django uses `settings.py` to configure itself, and as such, it will be home to a variety of secrets and whatnot. Some things will have to be set via `environmental variables` to work effectively. 

@@ -41,5 +41,3 @@ npm_update_packages:
 # effectively an upgrade.
 pip_update_packages:
 	docker-compose run backend bash -c "pip install -r requirements.txt --upgrade && pip freeze > requirements.txt"
-
-
