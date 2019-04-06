@@ -1,9 +1,19 @@
-# we utilise the requirements file as `pip` is a base installed package whereas
-# pipenv is not, I considered just `pip install pipenv` in the docker file but
-# i felt that this gives a more centralised location for base image changes
-# i could be wrong, ya know?
-Django
-#boto3
-#sceptre
-#yamllint
-psycopg2-binary
+asn1crypto==0.24.0
+cffi==1.11.5
+cryptography==2.3.1
+Django==2.2
+django-cors-headers==2.4.0
+djangorestframework==3.9.0
+djangorestframework-jwt==1.11.0
+ecdsa==0.13
+future==0.17.1
+idna==2.7
+psycopg2-binary==2.7.7
+pyasn1==0.4.4
+pycparser==2.19
+PyJWT==1.6.4
+python-jose==3.0.1
+pytz==2018.7
+rsa==4.0
+six==1.11.0
+sqlparse==0.3.0

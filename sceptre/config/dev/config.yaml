@@ -1,7 +1,0 @@
----
-# General Config for the Dev stack, specifies stack properties that are shared
-# across all stacks run aginst he dev env.
-# DOCS: https://sceptre.cloudreach.com/latest/docs/environment_config.html
-project_code: opensorcery
-region: {{environment_variable.SCEPTRE_OPENSORCERY_REGION}}
-profile: {{environment_variable.SCEPTRE_OPENSORCERY_PROFILE}}
