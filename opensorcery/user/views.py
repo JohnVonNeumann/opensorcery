@@ -8,4 +8,4 @@ def public(request):
 
 @api_view(['GET'])
 def private(request):
-    return HttpResponse("You should not see this message if not authenticated!")
+    return HttpResponse("You arenot authenticated!")
