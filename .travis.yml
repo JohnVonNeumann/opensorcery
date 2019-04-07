@@ -29,6 +29,8 @@ jobs:
           -v ${PWD}:/code
           opensorcery/npm-package-json-lint
     - stage: docker-compose up --build
+      before_script:
+        - ./scripts/create_env_file_for_docker_build.sh
       os: linux
       script: docker-compose up -d --build
       # - docker-compose run python manage.py test
