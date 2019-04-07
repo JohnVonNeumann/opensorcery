@@ -22,6 +22,15 @@ Automation here is a first class citizen, and we have a strong belief that all m
         `docker-compose` binary with `Make`, all the user needs to know is 
         `make up` serves them their development environment.
 
+#### scripts/ directory
+The scripts directory contains various helper scripts used at various stages of our pipelines or otherwise, these are similar in use to that of the `makefile` however they should be written into the `scripts directory` when they may be needed remotely. For example:
+        
+        scripts/create_env_file_for_docker_build.sh
+
+        Is used by `travis` to generate a file required for `docker-compose` to be tested effectively.
+
+Scripts should be written in line with `shellcheck` linting standards, and have documentation written for them.
+
 #### Make Commands
 
 Commands can be read by users by reading the [Makefile](https://github.com/opensorcery-io/opensorcery/blob/master/Makefile), otherwise, view the table below for a brief summary.
