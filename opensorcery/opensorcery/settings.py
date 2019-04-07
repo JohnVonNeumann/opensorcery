@@ -138,8 +138,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH0_DOMAIN = '<YOUR_AUTH0_DOMAIN>'
-API_IDENTIFIER = '<YOUR_API_IDENTIFIER>'
+AUTH0_DOMAIN = os.getenv('auth0_domain')
+API_IDENTIFIER = os.getenv('api_identifier')
 PUBLIC_KEY = None
 JWT_ISSUER = None
 

@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
 
+from user import views as user_views
 from . import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
+    url(r'^api/public/', user_views.public),
+    url(r'^api/private/', user_views.private)
 ]
