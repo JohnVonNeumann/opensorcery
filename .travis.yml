@@ -28,6 +28,7 @@ jobs:
           docker run --rm
           -v ${PWD}:/code
           opensorcery/npm-package-json-lint
+        - bash -c 'shopt -s globstar; shellcheck **/*.sh'
     - stage: docker-compose up --build
       before_script:
         - ./scripts/create_env_file_for_docker_build.sh
