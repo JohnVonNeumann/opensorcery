@@ -21,7 +21,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-frontend
-    command: npm run dev 
+    command: npm run dev
     volumes:
       - .:/code
     ports:
