@@ -142,9 +142,18 @@ AUTH0_DOMAIN = os.getenv('auth0_domain')
 API_IDENTIFIER = os.getenv('api_identifier')
 PUBLIC_KEY = None
 JWT_ISSUER = None
+URL_SCHEME = "https"
 
 if AUTH0_DOMAIN:
-    jsonurl = request.urlopen('https://' + AUTH0_DOMAIN + '/.well-known/jwks.json')
+    if URL_SCHEME == "https":
+        # Bandit nosec rationalisation:
+        # We perform input validation here to ensure that only the `https` url scheme is used
+        # as we can trust this, the error B310 is raised as a warning around the use of `file:`
+        # and other less trusted schemes.
+        jsonurl = request.urlopen(URL_SCHEME + '://' + AUTH0_DOMAIN + '/.well-known/jwks.json') #nosec
+    else:
+        raise ValueError("Only the HTTPS scheme is supported when using the `urlopen` call." \
+                         "Refer to `bandit B310: urllib_urlopen")
     jwks = json.loads(jsonurl.read().decode('utf-8'))
     cert = '-----BEGIN CERTIFICATE-----\n' + jwks['keys'][0]['x5c'][0] + '\n-----END CERTIFICATE-----'
     certificate = load_pem_x509_certificate(cert.encode('utf-8'), default_backend())
