@@ -6,9 +6,9 @@ jobs:
   include:
     - stage: code linting
       script:
-        - docker run --rm -i hadolint/hadolint < Dockerfile-backend
-        - docker run --rm -i hadolint/hadolint < Dockerfile-frontend
-        - docker run --rm -i hadolint/hadolint < Dockerfile-database
+        - docker run --rm -i hadolint/hadolint < database/Dockerfile
+        - docker run --rm -i hadolint/hadolint < frontend/Dockerfile
+        - docker run --rm -i hadolint/hadolint < opensorcery/Dockerfile
         - >
           docker run --rm
           -v ${PWD}:/yaml
@@ -19,7 +19,7 @@ jobs:
           -v ${PWD}:/pycode
           flintci/pycodestyle
           /pycode
-        - > 
+        - >
           docker run --rm
           -v ${PWD}:/code
           opensorcery/bandit -r
