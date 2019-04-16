@@ -14,10 +14,15 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "auth0-js": "^9.10.1",
+    "axios": "^0.18.0",
+    "eventemitter3": "^3.1.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "@vue/cli": "latest",
+    "@vue/cli-init": "latest",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.1",
@@ -37,6 +42,7 @@
     "cross-env": "^5.0.1",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
+    "dotenv-webpack": "^1.7.0",
     "eslint": "^4.15.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^3.0.0",
@@ -84,9 +90,7 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0",
-    "@vue/cli": "latest",
-    "@vue/cli-init": "latest"
+    "webpack-merge": "^4.1.0"
   },
   "engines": {
     "node": ">= 6.0.0",

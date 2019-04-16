@@ -4,15 +4,27 @@
 ## Development
 The project uses Docker/Docker Compose to handle development environments. The setup is fairly simple:
 1. `git clone` the repository
-2. Ensure that you have docker installed.
-3. from the root of the directory, run `make up`
-4. Navigate to `localhost:8000` for Django.
-5. Navigate also to `localhost:8080` for Vue.
-5. great success
+2. Ensure you have all the requirements installed with `make check_host_system_installs`.
+3. Create a `.env` file from the `.env.template` file in the root directory, place a copy in `frontend/`
+4. From the root of the directory, run `make up`
+5. Navigate to `localhost:8000` for Django.
+6. Navigate also to `localhost:8080` for Vue.
+7. great success
 
 ---
 
 ## Backend
+
+### Docker
+`Docker` and `Docker Compose` are used within the codebase to provide a simple, easy to use, and replicatable development environment for all developers to use. There are a small amount of gotchas that exist with the usage of `docker` however, the main one being the use of `.env` files which are obviously currently required for both the `frontend` and `backend` projects to work.
+
+In particular, the `Django` project can helpfully load in the required `environmental variables` using the `env_file` directive in `docker-compose`, however, the `frontend` project is not the same, and it requires a copy of the `env` file to be located in its `directory`, otherwise when `docker-compose up --build` or something of a similar nature is run, you will see a warning to the effect of:
+
+        No .env file could be found
+
+Which is obviously not what you want, a todo around this would be to use inotify rules or something similar to automatically copy the env file into the `frontend` directory when it changes within the root. Or simply utilise something like `Hashicorp Vault` to load the variables dynamically.
+
+The root of the directory contains an `.env.template` file to show users what values they require.
 
 ### Automation
 Automation here is a first class citizen, and we have a strong belief that all menial tasks can, should and will be automated. We utilise `Make` for development environment automation, as it allows for a consistent API to deal with, and allows various skilled operators to provide a simple interface for their (perhaps) complicated processes to be handled.
