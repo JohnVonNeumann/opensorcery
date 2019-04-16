@@ -5,10 +5,11 @@
 The project uses Docker/Docker Compose to handle development environments. The setup is fairly simple:
 1. `git clone` the repository
 2. Ensure you have all the requirements installed with `make check_host_system_installs`.
-3. from the root of the directory, run `make up`
-4. Navigate to `localhost:8000` for Django.
-5. Navigate also to `localhost:8080` for Vue.
-5. great success
+3. Create a `.env` file from the `.env.template` file in the root directory, place a copy in `frontend/`
+4. From the root of the directory, run `make up`
+5. Navigate to `localhost:8000` for Django.
+6. Navigate also to `localhost:8080` for Vue.
+7. great success
 
 ---
 
@@ -22,6 +23,8 @@ In particular, the `Django` project can helpfully load in the required `environm
         No .env file could be found
 
 Which is obviously not what you want, a todo around this would be to use inotify rules or something similar to automatically copy the env file into the `frontend` directory when it changes within the root. Or simply utilise something like `Hashicorp Vault` to load the variables dynamically.
+
+The root of the directory contains an `.env.template` file to show users what values they require.
 
 ### Automation
 Automation here is a first class citizen, and we have a strong belief that all menial tasks can, should and will be automated. We utilise `Make` for development environment automation, as it allows for a consistent API to deal with, and allows various skilled operators to provide a simple interface for their (perhaps) complicated processes to be handled.
