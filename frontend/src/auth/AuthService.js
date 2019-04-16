@@ -17,10 +17,10 @@ export default class AuthService {
   // create an instance of auth0.WebAuth with your
   // API and Client credentials
   auth0 = new auth0.WebAuth({
-    domain: env.process.auth0_domain,
-    clientID: env.process.client_id,
-    redirectUri: env.process.frontend_redirect_url,
-    audience: env.process.api_identifier,
+    domain: process.env.auth0_domain,
+    clientID: process.env.client_id,
+    redirectUri: process.env.frontend_redirect_url,
+    audience: process.env.api_identifier,
     responseType: 'token id_token',
     scope: 'openid profile'
   });
