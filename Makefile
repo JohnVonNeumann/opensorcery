@@ -41,3 +41,10 @@ npm_update_packages:
 # effectively an upgrade.
 pip_update_packages:
 	docker-compose run backend bash -c "pip install -r requirements.txt --upgrade && pip freeze > requirements.txt"
+
+# django_migrate:
+# Runs a 'python manage.py migrate' with `docker-compose` to apply migrations
+# present in the project. This is a pain in the arse command because auto
+# applying the migrations is generally a bad idea.
+django_migrate:
+	docker-compose run backend python manage.py migrate

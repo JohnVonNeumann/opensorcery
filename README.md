@@ -54,6 +54,7 @@ Commands can be read by users by reading the [Makefile](https://github.com/opens
 | npm_add_package | Runs `npm install` with a user-provided keyword-arg in the form of `package=example` to install a package and add it to the `package.lock` files. |
 | npm_update_packages | Runs `npm update --save` to update your `package.lock` files. |
 | pip_update_packages | Runs `pip install --upgrade` with the `requirements.txt` file, and then `pip freeze` back into the `requirements.txt` file to upgrade all `python` dependencies. |
+| django_migrate | Runs `python manage.py migrate` in combination with `docker-compose` to apply all migrations within the project |
 
 ### Django
 Django uses `settings.py` to configure itself, and as such, it will be home to a variety of secrets and whatnot. Some things will have to be set via `environmental variables` to work effectively. 
