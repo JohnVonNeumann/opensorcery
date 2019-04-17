@@ -6,10 +6,11 @@ The project uses Docker/Docker Compose to handle development environments. The s
 1. `git clone` the repository
 2. Ensure you have all the requirements installed with `make check_host_system_installs`.
 3. Create a `.env` file from the `.env.template` file in the root directory, place a copy in `frontend/`
-4. From the root of the directory, run `make up`
-5. Navigate to `localhost:8000` for Django.
-6. Navigate also to `localhost:8080` for Vue.
-7. great success
+4. From the root of the directory, run `make django_migrate`
+5. From the root of the directory, run `make up`
+6. Navigate to `localhost:8000` for Django.
+7. Navigate also to `localhost:8080` for Vue.
+8. great success
 
 ---
 
