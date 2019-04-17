@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'opensorcery',
     'rest_framework',
     'rest_framework_jwt',
-    'corsheaders'
+    'corsheaders',
+    'user'
 ]
 
 MIDDLEWARE = [
