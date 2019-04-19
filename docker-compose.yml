@@ -23,5 +23,6 @@ services:
     command: npm run dev
     volumes:
       - ./frontend:/code
+      - /code/node_modules
     ports:
       - "8080:8080"
