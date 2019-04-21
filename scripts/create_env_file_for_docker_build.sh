@@ -10,6 +10,14 @@ touch .env
 # We ignore both errors here because the script merely generates a file, we are
 # not using the bash, SC is idenitifying the vars as valid bash, not strings.
 # shellcheck disable=SC2154
-echo "auth0_domain=${auth0_domain}" >> .env
+# echo "auth0_domain=${auth0_domain}" >> .env
 # shellcheck disable=SC2154
-echo "api_identifier=${api_identifier}" >> .env
+# echo "api_identifier=${api_identifier}" >> .env
+# shellcheck disable=SC2154
+# echo "test_secret=${test_secret}" >> .env
+
+{
+  echo "auth0_domain=${auth0_domain}"
+  echo "api_identifier=${api_identifier}"
+  echo "test_secret=${test_secret}"
+} >> .env

@@ -143,11 +143,21 @@ STATIC_URL = '/static/'
 
 AUTH0_DOMAIN = os.getenv('auth0_domain')
 API_IDENTIFIER = os.getenv('api_identifier')
+
+environmental_variables = [AUTH0_DOMAIN, API_IDENTIFIER]
+for variable in environmental_variables:
+    if variable is not None:
+        pass
+    else:
+        raise ValueError("Neither auth0_domain or api_identifier can be empty")
+
 PUBLIC_KEY = None
 JWT_ISSUER = None
 URL_SCHEME = "https"
 
-if AUTH0_DOMAIN:
+print(os.getenv('test_secret'))
+
+if AUTH0_DOMAIN != "":
     if URL_SCHEME == "https":
         # Bandit nosec rationalisation:
         # We perform input validation here to ensure that only the `https` url scheme is used
@@ -162,6 +172,8 @@ if AUTH0_DOMAIN:
     certificate = load_pem_x509_certificate(cert.encode('utf-8'), default_backend())
     PUBLIC_KEY = certificate.public_key()
     JWT_ISSUER = 'https://' + AUTH0_DOMAIN + '/'
+else:
+    raise ValueError("AUTH0_DOMAIN environmental variable can not be empty.")
 
 def jwt_get_username_from_payload_handler(payload):
     return 'auth0user'
