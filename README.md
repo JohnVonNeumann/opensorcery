@@ -5,7 +5,7 @@
 The project uses Docker/Docker Compose to handle development environments. The setup is fairly simple:
 1. `git clone` the repository
 2. Ensure you have all the requirements installed with `make check_host_system_installs`.
-3. Create a `.env` file from the `.env.template` file in the root directory, place a copy in `frontend/`
+3. Create a `.env` file from the `.env.template` file in the root directory, place a copy in `frontend/` - Alternatively, use the `scripts/create_env_file_for_frontend_directory.sh` script to create it from locally sourced environmental variables.
 4. From the root of the directory, run `make django_migrate`
 5. From the root of the directory, run `make up`
 6. Navigate to `localhost:8000` for Django.

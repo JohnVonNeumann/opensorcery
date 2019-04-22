@@ -2,6 +2,19 @@
 services:
   - docker
 
+env:
+  - DOCKER_COMPOSE_VERSION=1.23.2
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose  # yamllint disable-line
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"  # yamllint disable-line
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+
 jobs:
   include:
     - stage: code linting
@@ -29,12 +42,18 @@ jobs:
           -v ${PWD}:/code
           opensorcery/npm-package-json-lint
         - bash -c 'shopt -s globstar; shellcheck **/*.sh'
-    - stage: docker-compose up --build
+    - stage: build docker-compose and run tests
       before_script:
         - ./scripts/create_env_file_for_docker_build.sh
+        - ./scripts/create_env_file_for_frontend_directory.sh
       os: linux
-      script: docker-compose up -d --build
-      # - docker-compose run python manage.py test
+      script:
+        - docker-compose up -d --build
+        - docker-compose images
+        - docker-compose ps
+        - docker-compose logs
+        - docker-compose exec backend python manage.py migrate
+        - docker-compose exec backend python manage.py test
 
 # after_success:
 # - coveralls

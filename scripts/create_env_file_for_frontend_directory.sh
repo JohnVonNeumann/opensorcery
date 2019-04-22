@@ -12,9 +12,9 @@
 
 {
   # shellcheck disable=SC2154
-  echo "auth0_domain=${auth0_domain}"
+  echo "api_url=${api_url}"
   # shellcheck disable=SC2154
-  echo "api_identifier=${api_identifier}"
+  echo "client_id=${client_id}"
   # shellcheck disable=SC2154
-  echo "test_secret=${test_secret}"
-} >> .env
+  echo "frontend_redirect_url=${frontend_redirect_url}"
+} >> frontend/.env
