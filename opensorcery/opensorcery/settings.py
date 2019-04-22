@@ -155,8 +155,6 @@ PUBLIC_KEY = None
 JWT_ISSUER = None
 URL_SCHEME = "https"
 
-print(os.getenv('test_secret'))
-
 if AUTH0_DOMAIN != "":
     if URL_SCHEME == "https":
         # Bandit nosec rationalisation:
