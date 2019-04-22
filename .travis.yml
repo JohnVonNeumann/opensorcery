@@ -45,6 +45,7 @@ jobs:
     - stage: build docker-compose and run tests
       before_script:
         - ./scripts/create_env_file_for_docker_build.sh
+        - ./scripts/create_env_file_for_frontend_directory.sh
       os: linux
       script:
         - docker-compose up -d --build
