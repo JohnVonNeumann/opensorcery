@@ -49,12 +49,10 @@ jobs:
       os: linux
       script:
         - docker-compose up -d --build
-        - docker-compose --version
-        - docker --version
         - docker-compose images
         - docker-compose ps
         - docker-compose logs
-        # - docker-compose exec frontend npm list
+        - docker-compose exec backend python manage.py migrate
         - docker-compose exec backend python manage.py test
 
 # after_success:
