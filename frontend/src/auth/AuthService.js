@@ -25,10 +25,18 @@ export default class AuthService {
     scope: 'openid profile'
   });
 
+  auth0Management = new auth0.Management({
+    domain: process.env.auth0_domain,
+    token: this.retrieveToken()
+  });
   // this method calls the authorize() method
   // which triggers the Auth0 login page
   login () {
     this.auth0.authorize()
+  }
+
+  retrieveToken () {
+    // empty
   }
 
   // this method calls the parseHash() method of Auth0
