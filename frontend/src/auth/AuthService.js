@@ -43,7 +43,7 @@ export default class AuthService {
         return console.log(err)
       }
       if (user) {
-        var userId = user.sub.split('|')[1]
+        var userId = user.sub
         localStorage.setItem('user_id', userId)
       }
     })
@@ -93,6 +93,7 @@ export default class AuthService {
     localStorage.removeItem('access_token')
     localStorage.removeItem('id_token')
     localStorage.removeItem('expires_at')
+    localStorage.removeItem('user_id')
     this.authNotifier.emit('authChange', false)
     // navigate to the home route
     router.replace('/')
