@@ -22,21 +22,42 @@ export default class AuthService {
     redirectUri: process.env.frontend_redirect_url,
     audience: process.env.api_identifier,
     responseType: 'token id_token',
-    scope: 'openid profile'
+    scope: 'openid profile read:current_user'
   });
 
-  auth0Management = new auth0.Management({
-    domain: process.env.auth0_domain,
-    token: this.retrieveToken()
-  });
   // this method calls the authorize() method
   // which triggers the Auth0 login page
   login () {
     this.auth0.authorize()
   }
 
-  retrieveToken () {
-    // empty
+  accessManagementAPI () {
+    const accessToken = localStorage.getItem('access_token')
+    console.log(accessToken)
+    var auth0Management = new auth0.Management({
+      domain: process.env.auth0_domain,
+      token: accessToken
+    })
+    this.getUserProfile(function (err, user) {
+      if (err) {
+        return console.log(err)
+      }
+      if (user) {
+        var userId = user.sub.split('|')[1]
+        localStorage.setItem('user_id', userId)
+      }
+    })
+    const userId = localStorage.getItem('user_id')
+    console.log(userId)
+    var managementUser = auth0Management.getUser(userId, function (err, resp) {
+      if (err) {
+        console.log('error', err)
+      }
+      if (resp) {
+        console.log('resp', resp)
+      }
+    })
+    return console.log('mgmt user', managementUser)
   }
 
   // this method calls the parseHash() method of Auth0

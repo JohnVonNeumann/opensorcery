@@ -17,6 +17,13 @@
     <button
       class="btn btn-primary btn-margin"
       v-if="authenticated"
+      @click="accessManagementAPI()">
+      Access Management API
+    </button>
+
+    <button
+      class="btn btn-primary btn-margin"
+      v-if="authenticated"
       @click="logout()">
       Log Out
     </button>
@@ -61,6 +68,9 @@ export default {
         console.log(response.data)
         this.message = response.data || ''
       })
+    },
+    accessManagementAPI () {
+      auth.accessManagementAPI()
     }
   }
 }
