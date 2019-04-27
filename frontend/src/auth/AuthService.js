@@ -22,6 +22,8 @@ export default class AuthService {
     redirectUri: process.env.frontend_redirect_url,
     audience: process.env.api_identifier,
     responseType: 'token id_token',
+    // scope may need to be further expanded before the ticket can be marked
+    // as done
     scope: 'openid profile read:current_user'
   });
 
@@ -31,9 +33,10 @@ export default class AuthService {
     this.auth0.authorize()
   }
 
+  // this method accesses the Auth0 management API on behalf of a user, we use
+  // the management api to retrieve the user's github information.
   accessManagementAPI () {
     const accessToken = localStorage.getItem('access_token')
-    console.log(accessToken)
     var auth0Management = new auth0.Management({
       domain: process.env.auth0_domain,
       token: accessToken
@@ -48,15 +51,13 @@ export default class AuthService {
       }
     })
     const userId = localStorage.getItem('user_id')
-    console.log(userId)
     var managementUser = auth0Management.getUser(userId, function (err, resp) {
       if (err) {
-        console.log('error', err)
-      }
-      if (resp) {
-        console.log('resp', resp)
+        console.log(err)
       }
     })
+    // TODO remove the console log when further on in the piece, doesn't need
+    // to happen long term
     return console.log('mgmt user', managementUser)
   }
 
