@@ -22,13 +22,43 @@ export default class AuthService {
     redirectUri: process.env.frontend_redirect_url,
     audience: process.env.api_identifier,
     responseType: 'token id_token',
-    scope: 'openid profile'
+    // scope may need to be further expanded before the ticket can be marked
+    // as done
+    scope: 'openid profile read:current_user'
   });
 
   // this method calls the authorize() method
   // which triggers the Auth0 login page
   login () {
     this.auth0.authorize()
+  }
+
+  // this method accesses the Auth0 management API on behalf of a user, we use
+  // the management api to retrieve the user's github information.
+  accessManagementAPI () {
+    const accessToken = localStorage.getItem('access_token')
+    var auth0Management = new auth0.Management({
+      domain: process.env.auth0_domain,
+      token: accessToken
+    })
+    this.getUserProfile(function (err, user) {
+      if (err) {
+        return console.log(err)
+      }
+      if (user) {
+        var userId = user.sub
+        localStorage.setItem('user_id', userId)
+      }
+    })
+    const userId = localStorage.getItem('user_id')
+    var managementUser = auth0Management.getUser(userId, function (err, resp) {
+      if (err) {
+        console.log(err)
+      }
+    })
+    // TODO remove the console log when further on in the piece, doesn't need
+    // to happen long term
+    return console.log('mgmt user', managementUser)
   }
 
   // this method calls the parseHash() method of Auth0
@@ -64,6 +94,7 @@ export default class AuthService {
     localStorage.removeItem('access_token')
     localStorage.removeItem('id_token')
     localStorage.removeItem('expires_at')
+    localStorage.removeItem('user_id')
     this.authNotifier.emit('authChange', false)
     // navigate to the home route
     router.replace('/')
