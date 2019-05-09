@@ -15,3 +15,10 @@ A clear and concise description of any alternative solutions or features you've 
 
 **Additional context**
 Add any other context or screenshots about the feature request here.
+
+**Definition of Done:**
+- [ ] Applicable functional tests written: Unit, Integration, System, Sanity, Smoke, Interface, Regression, Beta/Acceptance
+- [ ] Applicable non-functional tests written: Performance, Load, Stress, Volume, Security, Compatibility, Install, Recovery, Reliability, Usability, Compliance, Localization
+- [ ] Documentation updated.
+- [ ] Build pipeline updated.
+- [ ] Relevant code comments.
