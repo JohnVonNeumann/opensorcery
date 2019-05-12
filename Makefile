@@ -49,8 +49,16 @@ pip_update_packages:
 django_migrate:
 	docker-compose run backend python manage.py migrate
 
-# django_migrate:
+# django_test:
 # Runs a 'python manage.py test' with `docker-compose` to run all django based
 # tests.
 django_test:
 	docker-compose run backend python manage.py test
+
+# docker_clean_all:
+# Cleans all images, containers and anything related to docker. This shouldn't
+# be used if your machine contains anything critical on docker not related to
+# the project, it will remove everything. I use it when I'm testing new things
+# to do with migrations or the like where I need a *clean* start.
+docker_clean_all:
+	docker system prune --all
