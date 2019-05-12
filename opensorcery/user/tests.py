@@ -2,7 +2,7 @@ from django.test import TestCase
 
 from .models import User
 
-# Create your tests here.
+
 class UserTests(TestCase):
 
     def test_userpage(self):
