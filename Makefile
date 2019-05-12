@@ -55,6 +55,12 @@ django_migrate:
 django_test:
 	docker-compose run backend python manage.py test
 
+# django_makemigrations:
+# Runs a 'python manage.py makemigrations' with `docker-compose` to generate
+# new migrations as a result of updates to the applications models.
+django_makemigrations:
+	docker-compose run backend python manage.py makemigrations
+
 # docker_clean_all:
 # Cleans all images, containers and anything related to docker. This shouldn't
 # be used if your machine contains anything critical on docker not related to
