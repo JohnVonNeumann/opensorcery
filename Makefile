@@ -48,3 +48,9 @@ pip_update_packages:
 # applying the migrations is generally a bad idea.
 django_migrate:
 	docker-compose run backend python manage.py migrate
+
+# django_migrate:
+# Runs a 'python manage.py test' with `docker-compose` to run all django based
+# tests.
+django_test:
+	docker-compose run backend python manage.py test
