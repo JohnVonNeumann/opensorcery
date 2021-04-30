@@ -14,6 +14,6 @@ pycparser==2.19
 PyJWT==1.6.4
 python-jose==3.0.1
 pytz==2018.7
-rsa==4.0
+rsa==4.7
 six==1.11.0
 sqlparse==0.3.0
